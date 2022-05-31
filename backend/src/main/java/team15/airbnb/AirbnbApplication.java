@@ -1,13 +1,13 @@
-package sidedish;
+package team15.airbnb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SidedishApplication {
+public class AirbnbApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SidedishApplication.class, args);
+		SpringApplication.run(AirbnbApplication.class, args);
 	}
 
 }
