@@ -49,15 +49,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_ID }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Deploy 😆
+      - name: Deploy 😆 - multiple host
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.EC2_BASTION_IP }}
+          host: ${{ secrets.EC2_BASTION_IP }},${{ secrets.EC2_WAS_IP }}
           username: ec2-user
           key: ${{ secrets.PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
-            ssh -i ${{ secrets.PRIVATE_KEY }} ec2-user@${{ secrets.EC2_WAS_IP }}
+            # ssh -i ${{ secrets.PRIVATE_KEY }} ec2-user@${{ secrets.EC2_WAS_IP }}
             curl -w '\n' http://169.254.169.254/latest/meta-data/local-ipv4
             docker pull gkstjr5731/sidedish:be-deploy-${GITHUB_SHA::7}
             docker tag gkstjr5731/sidedish:be-deploy-${GITHUB_SHA::7} sidedish:be-deploy-${GITHUB_SHA::7}
