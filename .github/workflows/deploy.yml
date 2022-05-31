@@ -57,6 +57,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
+            echo ${GITHUB_SHA}
             docker pull gkstjr5731/sidedish:be-deploy-${GITHUB_SHA::7}
             docker tag gkstjr5731/sidedish:be-deploy-${GITHUB_SHA::7} sidedish:be-deploy-${GITHUB_SHA::7}
             docker stop server
