@@ -43,7 +43,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
-          image: gkstjr5731/airbnb
+          image: team-15/airbnb
           registry: docker.io
           dockerfile: ${{env.working-directory}}/Dockerfile
           username: ${{ secrets.DOCKERHUB_ID }}
@@ -63,7 +63,7 @@ jobs:
             whoami
             ls
             curl -w '\n' http://169.254.169.254/latest/meta-data/local-ipv4
-            docker pull gkstjr5731/airbnb:main-${GITHUB_SHA::7}
-            docker tag gkstjr5731/airbnb:main-${GITHUB_SHA::7} airbnb:main-${GITHUB_SHA::7}
+            docker pull team-15/airbnb:test2-${GITHUB_SHA::7}
+            docker tag team-15/airbnb:test2-${GITHUB_SHA::7} airbnb:test2-${GITHUB_SHA::7}
             docker stop server
-            docker run -d --rm --name server -p 8080:8080 airbnb:main-${GITHUB_SHA::7}
+            docker run -d --rm --name server -p 8080:8080 airbnb:test2-${GITHUB_SHA::7}
