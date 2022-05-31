@@ -61,6 +61,7 @@ jobs:
           envs: GITHUB_SHA
           script: |
             whoami
+            ls
             curl -w '\n' http://169.254.169.254/latest/meta-data/local-ipv4
             docker pull gkstjr5731/sidedish:be-deploy-${GITHUB_SHA::7}
             docker tag gkstjr5731/sidedish:be-deploy-${GITHUB_SHA::7} sidedish:be-deploy-${GITHUB_SHA::7}
