@@ -9,7 +9,7 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ test2 ]
+    branches: [test2]
 
 permissions:
   contents: read
@@ -25,8 +25,8 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
-          java-version: "11"
-          distribution: "temurin"
+          java-version: '11'
+          distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -43,7 +43,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
-          image: airbnb
+          image: gkstjr5731/airbnb
           registry: docker.io
           dockerfile: ${{env.working-directory}}/Dockerfile
           username: ${{ secrets.DOCKERHUB_ID }}
@@ -63,7 +63,7 @@ jobs:
             whoami
             ls
             curl -w '\n' http://169.254.169.254/latest/meta-data/local-ipv4
-            docker pull airbnb:main-${GITHUB_SHA::7}
-            docker tag airbnb:main-${GITHUB_SHA::7} airbnb:main-${GITHUB_SHA::7}
+            docker pull gkstjr5731/airbnb:main-${GITHUB_SHA::7}
+            docker tag gkstjr5731/airbnb:main-${GITHUB_SHA::7} airbnb:main-${GITHUB_SHA::7}
             docker stop server
             docker run -d --rm --name server -p 8080:8080 airbnb:main-${GITHUB_SHA::7}
