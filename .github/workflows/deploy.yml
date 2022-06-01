@@ -58,3 +58,5 @@ jobs:
           script: |
             docker pull gkstjr5731/airbnb:test2-${GITHUB_SHA::7}
             docker tag gkstjr5731/airbnb:test2-${GITHUB_SHA::7} airbnb:test2-${GITHUB_SHA::7}
+            docker stop server
+            docker run -d --rm -e profile=$profile --name server -p 8080:8080 airbnb:backend-${GITHUB_SHA::7}
