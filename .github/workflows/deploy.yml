@@ -59,4 +59,4 @@ jobs:
             docker pull gkstjr5731/airbnb:latest
             docker tag gkstjr5731/airbnb:latest airbnb:latest
             docker stop airbnb-server
-            docker run -d -e MYSQL_USERNAME=${{secrets.MYSQL_USERNAME}} -e MYSQL_DATABASE_URL=${{secrets.MYSQL_DATABASE_URL}} -e MYSQL_DATABASE_PASSWORD=${{secrets.MYSQL_DATABASE_PASSWORD}} --name airbnb-server -p 8080:8080 airbnb:latest
+            docker run -d -e MYSQL_USERNAME=${{secrets.MYSQL_DATABASE_USERNAME}} -e MYSQL_DATABASE_URL=${{secrets.MYSQL_DATABASE_URL}} -e MYSQL_DATABASE_PASSWORD=${{secrets.MYSQL_DATABASE_PASSWORD}} --name airbnb-server -p 8080:8080 airbnb:latest
