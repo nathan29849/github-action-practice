@@ -41,7 +41,7 @@ jobs:
         with:
           image: gkstjr5731/airbnb
           registry: docker.io
-          tags: v1,latest
+          tags: v1, latest
           dockerfile: ${{env.working-directory}}/Dockerfile
           username: ${{ secrets.DOCKERHUB_ID }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
