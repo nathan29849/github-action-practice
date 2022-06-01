@@ -41,6 +41,7 @@ jobs:
         with:
           image: gkstjr5731/airbnb
           registry: docker.io
+          tags: v1,latest
           dockerfile: ${{env.working-directory}}/Dockerfile
           username: ${{ secrets.DOCKERHUB_ID }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -54,9 +55,8 @@ jobs:
           proxy_host: ${{ secrets.EC2_BASTION_IP }}
           proxy_username: ec2-user
           proxy_key: ${{ secrets.PRIVATE_KEY }}
-          envs: GITHUB_SHA
           script: |
-            docker pull gkstjr5731/airbnb:test2-${GITHUB_SHA::7}
-            docker tag gkstjr5731/airbnb:test2-${GITHUB_SHA::7} airbnb:test2-${GITHUB_SHA::7}
+            docker pull gkstjr5731/airbnb:latest
+            docker tag gkstjr5731/airbnb:latest airbnb:latest
             docker stop server
-            docker run -d -e profile=$profile -e MYSQL_USERNAME=$MYSQL_USERNAME -e MYSQL_DATABASE_URL=$MYSQL_DATABASE_URL -e MYSQL_DATABASE_PASSWORD=$MYSQL_DATABASE_PASSWORD --name server -p 8080:8080 airbnb:test2-${GITHUB_SHA::7}
+            docker run -d -e profile=$profile -e MYSQL_USERNAME=${{secrets.MYSQL_USERNAME}} -e MYSQL_DATABASE_URL=${{secrets.MYSQL_DATABASE_URL}} -e MYSQL_DATABASE_PASSWORD=${{secrets.MYSQL_DATABASE_PASSWORD}} --name server -p 8080:8080 airbnb:latest
