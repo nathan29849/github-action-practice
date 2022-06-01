@@ -40,8 +40,8 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
           image: gkstjr5731/airbnb
-          registry: docker.io
           tags: v1, latest
+          registry: docker.io
           dockerfile: ${{env.working-directory}}/Dockerfile
           username: ${{ secrets.DOCKERHUB_ID }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
