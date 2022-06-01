@@ -3,4 +3,4 @@ spring:
     servlet:
       path: /api
   profiles:
-    active: ${profile}
+    active: prod
