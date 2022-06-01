@@ -37,7 +37,7 @@ jobs:
         working-directory: ${{env.working-directory}}
 
       - name: Build and Push Docker Image
-        uses: mr-smithers-excellent/docker-build-push@v4
+        uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
           image: gkstjr5731/airbnb
           tags: v1, latest
